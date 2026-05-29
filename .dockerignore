@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.vscode/
+.idea/
+.git/
+.gitignore
+*.wav
+*.mp3
+*.html
+!src/**/*.html
+sample_data/
+docker-compose.yml
+Makefile

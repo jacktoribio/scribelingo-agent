@@ -1,0 +1,15 @@
+services:
+  ingles-ayuda:
+    build: .
+    image: ingles-ayuda
+    entrypoint: ["python", "src/main.py"]
+    volumes:
+      - ./samples:/app/samples
+      - ./output:/app/output
+    command: ["--video", "samples/example.mp4", "--output", "output"]
+
+  test:
+    build: .
+    image: ingles-ayuda
+    entrypoint: ["python", "-m", "pytest"]
+    command: ["tests/", "-v"]

@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+*.wav
+*.mp3
+*.html
+*.md
+!src/**/*.md
+sample_data/
