@@ -8,8 +8,9 @@ venv/
 *.wav
 *.mp3
 *.html
-*.md
+# *.md
 !src/**/*.md
+!README.md
 sample_data/
 .env
 node_modules/
