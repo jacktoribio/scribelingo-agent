@@ -1,15 +1,10 @@
 from collections import Counter
-from dataclasses import dataclass, field
 from typing import List, Tuple
 
 import spacy
 from spacy.tokens import Doc
 
-
-@dataclass
-class GrammarResult:
-    pos_patterns: List[Tuple[str, str, int]] = field(default_factory=list)
-    dep_triples: List[Tuple[str, int]] = field(default_factory=list)
+from src.core.models import GrammarResult
 
 
 class GrammarAnalyzer:

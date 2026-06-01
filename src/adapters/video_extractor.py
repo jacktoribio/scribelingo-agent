@@ -3,12 +3,14 @@ from typing import Optional
 
 from moviepy import VideoFileClip
 
+from src.core.ports import AudioExtractorPort
+
 
 class AudioExtractionError(Exception):
     pass
 
 
-class VideoExtractor:
+class VideoExtractorAdapter(AudioExtractorPort):
     def __init__(self, ffmpeg_path: Optional[str] = None):
         self.ffmpeg_path = ffmpeg_path
 

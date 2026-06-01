@@ -1,6 +1,7 @@
 import pytest
 
-from src.analysis.vocabulary import VocabularyAnalyzer, VocabularyResult
+from src.core.models import VocabularyResult
+from src.core.vocabulary import VocabularyAnalyzer
 
 
 @pytest.fixture

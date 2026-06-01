@@ -24,10 +24,9 @@ $Python = Join-Path $VenDir "Scripts\python.exe"
 Write-Host "[2/4] Upgrading pip..." -ForegroundColor Yellow
 & $Pip install --upgrade pip
 
-# Step 3: Install requirements
-Write-Host "[3/4] Installing Python dependencies..." -ForegroundColor Yellow
-$ReqFile = Join-Path $ProjectRoot "requirements.txt"
-& $Pip install -r $ReqFile
+# Step 3: Install requirements (editable mode)
+Write-Host "[3/4] Installing Python dependencies (editable)..." -ForegroundColor Yellow
+& $Pip install -e $ProjectRoot
 
 # Step 4: Download spaCy model
 Write-Host "[4/4] Downloading spaCy English model..." -ForegroundColor Yellow

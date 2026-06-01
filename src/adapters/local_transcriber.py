@@ -1,22 +1,17 @@
-from dataclasses import dataclass, field
 from pathlib import Path
-from typing import List, Optional
+from typing import Optional
 
 import whisper
 
-
-@dataclass
-class TranscriptionResult:
-    text: str
-    segments: List[dict] = field(default_factory=list)
-    language: str = ""
+from src.core.models import TranscriptionResult
+from src.core.ports import TranscriberPort
 
 
 class TranscriptionError(Exception):
     pass
 
 
-class Transcriber:
+class LocalWhisperAdapter(TranscriberPort):
     def __init__(self, model_size: str = "base"):
         self.model_size = model_size
         self._model: Optional[whisper.Whisper] = None

@@ -1,4 +1,5 @@
-from src.analysis.phrases import PhraseAnalyzer, PhrasesResult
+from src.core.models import PhrasesResult
+from src.core.phrases import PhraseAnalyzer
 
 
 def test_extract_ngrams():
@@ -32,4 +33,4 @@ def test_empty_text():
     result = analyzer.extract("", top_n=10)
 
     assert isinstance(result, PhrasesResult)
-    assert len(result.ngrams) == 0
+    assert all(len(v) == 0 for v in result.ngrams.values())

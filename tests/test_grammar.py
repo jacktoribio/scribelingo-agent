@@ -1,6 +1,7 @@
 import pytest
 
-from src.analysis.grammar import GrammarAnalyzer, GrammarResult
+from src.core.grammar import GrammarAnalyzer
+from src.core.models import GrammarResult
 
 
 @pytest.fixture

@@ -7,7 +7,7 @@ venv:
 	.venv\Scripts\pip install --upgrade pip
 
 install: venv
-	.venv\Scripts\pip install -r requirements.txt
+	.venv\Scripts\pip install -e .
 	.venv\Scripts\python -m spacy download en_core_web_sm
 
 test:
@@ -18,6 +18,9 @@ typecheck:
 
 run:
 	python src\main.py --video samples\example.mp4 --output samples --format html
+
+run-openai:
+	python src\main.py --video samples\example.mp4 --output samples --format html --backend openai
 
 clean:
 	rmdir /s /q .venv 2>nul || echo No .venv found

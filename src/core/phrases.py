@@ -1,19 +1,13 @@
 from collections import Counter
-from dataclasses import dataclass, field
 from math import log2
-from typing import Dict, List, Optional, Tuple
+from typing import Tuple
 
 from nltk import ngrams
 from nltk.collocations import BigramAssocMeasures, BigramCollocationFinder
 from nltk.tokenize import word_tokenize
 
+from src.core.models import PhrasesResult
 from src.utils.helpers import STOPWORDS_EN
-
-
-@dataclass
-class PhrasesResult:
-    ngrams: Dict[int, List[Tuple[str, float]]] = field(default_factory=dict)
-    collocations: List[Tuple[str, float]] = field(default_factory=list)
 
 
 class PhraseAnalyzer:

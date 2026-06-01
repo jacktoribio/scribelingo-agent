@@ -1,18 +1,11 @@
 from collections import Counter
-from dataclasses import dataclass, field
 from typing import List, Tuple
 
 import spacy
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+from src.core.models import VocabularyResult
 from src.utils.helpers import STOPWORDS_EN
-
-
-@dataclass
-class VocabularyResult:
-    word_freq: List[Tuple[str, int]] = field(default_factory=list)
-    lemma_freq: List[Tuple[str, int]] = field(default_factory=list)
-    keywords: List[Tuple[str, float]] = field(default_factory=list)
 
 
 class VocabularyAnalyzer:

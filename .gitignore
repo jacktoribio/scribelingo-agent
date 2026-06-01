@@ -11,3 +11,5 @@ venv/
 *.md
 !src/**/*.md
 sample_data/
+.env
+node_modules/
