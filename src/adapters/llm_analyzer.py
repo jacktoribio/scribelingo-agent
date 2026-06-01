@@ -77,14 +77,14 @@ _USER_PROMPT_TEMPLATE = "Here is the text to analyze:\n\n[TRANSCRIPT]\n{text}\n[
 
 
 class LLMAnalyzerAdapter(AnalyzerPort):
-    def __init__(self, api_key: str | None = None, model: str = "gpt-5.4-mini"):
+    def __init__(self, api_key: str | None = None, model: str | None = None):
         self.api_key = api_key or os.getenv("OPENAI_API_KEY")
         if not self.api_key:
             raise AnalysisError(
                 "OPENAI_API_KEY not set. Provide api_key or set the "
                 "OPENAI_API_KEY environment variable."
             )
-        self.model = model
+        self.model = model or os.getenv("LLM_MODEL", "gpt-5.4-mini")
         self._client: OpenAI | None = None
 
     @property

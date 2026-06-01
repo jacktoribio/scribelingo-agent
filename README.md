@@ -21,40 +21,40 @@
 ## 🛠️ Architecture & Workflow
 
 ```
-┌──────────────────────────────────────────────────┐
-│              ScribeLingo Pipeline                │
-├──────────────────────────────────────────────────┤
-│                                                  │
-│  ┌──────────────┐   missing    ┌──────────────┐  │
-│  │ transcript   │─────────────→│   audio .wav  │  │
-│  │    .txt      │              │              │  │
-│  └──────┬───────┘              └──────┬───────┘  │
-│         │ exists                     │ exists    │
-│         ▼                            ▼           │
-│  ┌──────────────┐           ┌──────────────┐     │
-│  │  Load text   │           │  Transcribe  │     │
-│  └──────┬───────┘           └──────┬───────┘     │
-│         │                          │              │
-│         └──────────┬───────────────┘              │
-│                    ▼                              │
-│         ┌──────────────────┐                      │
-│         │  missing audio   │  ┌──────────────┐    │
+┌────────────────────────────────────────────────────┐
+│              ScribeLingo Pipeline                  │
+├────────────────────────────────────────────────────┤
+│                                                    │
+│  ┌──────────────┐   missing    ┌──────────────┐    │
+│  │ transcript   │─────────────→│  audio .wav  │    │
+│  │    .txt      │              │              │    │
+│  └──────┬───────┘              └──────┬───────┘    │
+│         │ exists                     │ exists      │
+│         ▼                            ▼             │
+│  ┌──────────────┐           ┌──────────────┐       │
+│  │  Load text   │           │  Transcribe  │       │
+│  └──────┬───────┘           └──────┬───────┘       │
+│         │                          │               │
+│         └──────────┬───────────────┘               │
+│                    ▼                               │
+│         ┌──────────────────┐                       │
+│         │  missing audio   │  ┌───────────────┐    │
 │         │  & transcript    │──│ video .mp4    │    │
 │         │                  │  │ extract audio │    │
-│         └──────────────────┘  └──────┬───────┘    │
+│         └──────────────────┘  └───────┬───────┘    │
 │                    │                 │             │
 │                    ▼                 ▼             │
-│         ┌──────────────────────────────────┐      │
-│         │         LLM Analysis             │      │
-│         │   (GPT-5 / o-series)             │      │
-│         └──────────────┬───────────────────┘      │
-│                        ▼                          │
-│         ┌──────────────────────────────────┐      │
-│         │     Report Generation            │      │
-│         │   (HTML or Markdown)             │      │
-│         └──────────────────────────────────┘      │
-│                                                  │
-└──────────────────────────────────────────────────┘
+│         ┌──────────────────────────────────┐       │
+│         │         LLM Analysis             │       │
+│         │   (GPT-5 / o-series)             │       │
+│         └──────────────┬───────────────────┘       │
+│                        ▼                           │
+│         ┌──────────────────────────────────┐       │
+│         │     Report Generation            │       │
+│         │   (HTML or Markdown)             │       │
+│         └──────────────────────────────────┘       │
+│                                                    │
+└────────────────────────────────────────────────────┘
 ```
 
 ### Component Overview
@@ -79,6 +79,7 @@
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
 | `OPENAI_API_KEY` | Yes (for `--backend openai` and LLM analysis) | — | Your OpenAI API key |
+| `LLM_MODEL` | No | `gpt-5.4-mini` | Model for linguistic analysis (`gpt-4o`, `o3-mini`, etc.) |
 
 ### CLI Arguments
 
@@ -95,7 +96,7 @@ Options:
   --model MODEL             Model override:
                               local  → whisper model size (default: base)
                               openai → API model name (default: whisper-1)
-                              LLM    → model for analysis (default: gpt-5.4-mini)
+                              LLM    → model for analysis (default: from LLM_MODEL env or gpt-5.4-mini)
 ```
 
 ---
@@ -115,13 +116,15 @@ I think we should pause and consider the implications. This is not only a techni
 
 ### 1. Common Verb Tenses & Grammatical Structures
 
-* **Modal Verbs (should + base verb)**: Used to give recommendations or express obligation.
-  - "I think we **should pause** and consider the implications."
-  - "We **should consider** the long-term effects."
+1. Common Verb Tenses & Grammatical Structures
 
-* **Present Simple**: Used for stating facts or opinions.
-  - "I **think** we should pause."
-  - "This **is** not only a technical challenge."
+* **Present Simple / Present Continuous**: Used to describe current work, opinions, and ongoing tasks in the meeting.
+- "we don't have a ton of items to get to" (Joseph - [01:00])
+- "the event support that we need isn't as nailed down" (Christian - [00:40])
+
+* **Modal Verbs (should + base verb)**: Used to give recommendations or express obligation.
+  - "I think we **should pause** and consider the implications."  (Josh - [01:14])
+  - "We **should consider** the long-term effects." (Mc Gregor - [01:24])
 
 ### 2. Idiomatic Expressions & Phrasal Verbs
 
